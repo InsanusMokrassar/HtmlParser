@@ -1,7 +1,7 @@
 package insogroup.HtmlParser.StandardRealisation.PluginSyntaxAnalyzer;
 
 import insogroup.HtmlParser.StandardRealisation.exceptions.PluginException;
-import insogroup.HtmlParser.StandardRealisation.settings.classes.Settings;
+import insogroup.HtmlParser.StandardRealisation.settings.interfaces.Settings;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 

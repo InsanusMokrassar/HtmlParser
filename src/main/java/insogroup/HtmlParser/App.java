@@ -7,8 +7,7 @@ import insogroup.HtmlParser.StandardRealisation.SiteSyntaxAnalyzer.SiteParser;
 import insogroup.HtmlParser.StandardRealisation.exceptions.NetException;
 import insogroup.HtmlParser.StandardRealisation.exceptions.PluginException;
 import insogroup.HtmlParser.StandardRealisation.settings.classes.ProgramProperties;
-import insogroup.HtmlParser.StandardRealisation.settings.classes.ProgramStrings;
-import insogroup.HtmlParser.StandardRealisation.settings.classes.Settings;
+import insogroup.HtmlParser.StandardRealisation.settings.interfaces.Settings;
 
 import java.util.HashMap;
 import java.util.List;

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import insogroup.HtmlParser.StandardRealisation.exceptions.PluginException;
-import insogroup.HtmlParser.StandardRealisation.settings.classes.Settings;
+import insogroup.HtmlParser.StandardRealisation.settings.interfaces.Settings;
 
 public class State {
     private State parent;

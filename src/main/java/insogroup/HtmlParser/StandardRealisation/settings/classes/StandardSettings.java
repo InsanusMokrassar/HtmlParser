@@ -1,6 +1,7 @@
 package insogroup.HtmlParser.StandardRealisation.settings.classes;
 
 import insogroup.HtmlParser.StandardRealisation.settings.interfaces.ProgramParameters;
+import insogroup.HtmlParser.StandardRealisation.settings.interfaces.Settings;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -9,7 +10,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Settings implements ProgramParameters {
+public class StandardSettings implements Settings {
 
     private HashMap<String, String> settings;
 

@@ -5,7 +5,8 @@ import insogroup.HtmlParser.StandardRealisation.PluginSyntaxAnalyzer.State;
 import insogroup.HtmlParser.StandardRealisation.exceptions.PluginException;
 import insogroup.HtmlParser.StandardRealisation.settings.classes.ProgramProperties;
 import insogroup.HtmlParser.StandardRealisation.settings.classes.ProgramStrings;
-import insogroup.HtmlParser.StandardRealisation.settings.classes.Settings;
+import insogroup.HtmlParser.StandardRealisation.settings.classes.StandardSettings;
+import insogroup.HtmlParser.StandardRealisation.settings.interfaces.Settings;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -17,7 +18,7 @@ public class InitService {
     public static final String SETTINGS_PATH= RESOURCES_PATH + "settings.xml";
 
     public static Settings getSettings(){
-        Settings settings = new Settings();
+        StandardSettings settings = new StandardSettings();
         settings.init(new File(SETTINGS_PATH));
         return settings;
     }

@@ -1,7 +1,7 @@
 package insogroup.HtmlParser.StandardRealisation.SiteSyntaxAnalyzer;
 
 import insogroup.HtmlParser.StandardRealisation.PluginSyntaxAnalyzer.State;
-import insogroup.HtmlParser.StandardRealisation.settings.classes.Settings;
+import insogroup.HtmlParser.StandardRealisation.settings.interfaces.Settings;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
