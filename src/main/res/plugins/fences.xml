@@ -1,0 +1,12 @@
+<root site="http://blokstroyproekt.ru/fencing/fence" terms="link">
+    <div class="field-item">
+        <div class="field-item even">
+            <a title="Евроштакетник" href="%%link%%"></a>
+        </div>
+    </div>
+    <div class="field-item">
+        <div class="field-item odd">
+            <a title="Евроштакетник" href="%%link%%"></a>
+        </div>
+    </div>
+</root>

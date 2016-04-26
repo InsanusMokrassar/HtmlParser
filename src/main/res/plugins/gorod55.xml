@@ -1,0 +1,16 @@
+<root site="http://gorod55.ru/">
+	<div class="mainmenu">
+		<ul class="list-inline left menu">
+			<li>
+				<a class="announcement_type" href="%%link%%">%%title%%%%Название%%</a>
+			</li>
+		</ul>
+	</div>
+	<div class="block last-news">
+		<ul>
+			<li class="sep">
+				<a></a>
+			</li>
+		</ul>
+	</div>
+</root>

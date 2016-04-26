@@ -1,0 +1,8 @@
+<settings>
+    <possible-text-characters>[a-zA-Zа-яА-Я\%]+</possible-text-characters>
+    <variable-template>(\%\%[a-zA-Zа-яА-Я]+\%\%){1,}</variable-template>
+    <possible-variable-characters>[a-zA-Zа-яА-Я]+</possible-variable-characters>
+    <count>10</count>
+    <strings-path>src/main/res/strings.xml</strings-path>
+    <standard-property-path>src/main/res/standardProperty.properties</standard-property-path>
+</settings>
