@@ -22,7 +22,6 @@ public class App
     public static void main( String[] args )
     {
         Settings settings = InitService.getSettings();
-        ProgramStrings strings = InitService.getStrings(settings.get("strings-path"));
         ProgramProperties property = null;
         try {
             property = InitService.getProperties(args[0]);
@@ -36,7 +35,7 @@ public class App
             State stateTree = InitService.getPlugin(settings, property.get("file"));
             String link = stateTree.get("site");
             List<HashMap<String, String>> content = ContentLoader.loadContent(link, new SiteParser(settings), stateTree);
-            System.out.println(content.toArray().toString());
+            System.out.println(content.toString());
         } catch (PluginException e) {
             e.printStackTrace();
         } catch (NetException e) {
