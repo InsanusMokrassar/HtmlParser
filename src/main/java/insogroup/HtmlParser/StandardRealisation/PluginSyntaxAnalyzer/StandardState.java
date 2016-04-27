@@ -4,21 +4,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import insogroup.HtmlParser.StandardRealisation.PluginSyntaxAnalyzer.interfaces.State;
 import insogroup.HtmlParser.StandardRealisation.exceptions.PluginException;
 import insogroup.HtmlParser.StandardRealisation.settings.interfaces.Settings;
+import org.xml.sax.Attributes;
 
-public class State {
-    private State parent;
-    private List<State> childs;
 
-    private Settings settings;
+public class StandardState implements State {
+    protected State parent;
+    protected List<State> childs;
 
-    private String tag;
-    private String text;
+    protected Settings settings;
 
-    private HashMap<String, String> attributes;
+    protected String tag;
+    protected String text;
 
-    public State(State parent, String tag, org.xml.sax.Attributes attributes, Settings settings) {
+    protected HashMap<String, String> attributes;
+
+    public StandardState(State parent, String tag, Attributes attributes, Settings settings) {
         this.parent = parent;
         this.tag = tag;
         this.settings = settings;
@@ -26,7 +29,7 @@ public class State {
         this.childs = new ArrayList<>();
     }
 
-    private void setAttributes(org.xml.sax.Attributes attributes){
+    protected void setAttributes(Attributes attributes){
         this.attributes = new HashMap<>();
         for (int i = 0; i < attributes.getLength(); i++){
             String key = attributes.getQName(i);
@@ -35,8 +38,8 @@ public class State {
         }
     }
 
-    public State addChild(String name, org.xml.sax.Attributes attr){
-        State childState = new State(this, name, attr, settings);
+    public State addChild(String name, Attributes attr){
+        State childState = new StandardState(this, name, attr, settings);
         childs.add(childState);
         return childState;
     }
@@ -68,7 +71,7 @@ public class State {
     public void setText(String text) {
         String res = "";
         for (char tmp : text.toCharArray()){
-            if (!settings.checkStardardRegexp("" + tmp)){
+            if (!settings.checkStandardRegexp("" + tmp)){
                 break;
             }
             res += tmp;

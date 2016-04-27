@@ -1,5 +1,6 @@
 package insogroup.HtmlParser.StandardRealisation.PluginSyntaxAnalyzer;
 
+import insogroup.HtmlParser.StandardRealisation.PluginSyntaxAnalyzer.interfaces.State;
 import insogroup.HtmlParser.StandardRealisation.exceptions.PluginException;
 import insogroup.HtmlParser.StandardRealisation.settings.interfaces.Settings;
 import org.xml.sax.Attributes;
@@ -31,7 +32,7 @@ public class PluginSaxParser extends DefaultHandler{
             currentState = currentState.addChild(qName, attr);
         }
         catch (NullPointerException e){
-            currentState = new State(null, qName, attr, settings);
+            currentState = new PluginState(null, qName, attr, settings);
         }
     }
 

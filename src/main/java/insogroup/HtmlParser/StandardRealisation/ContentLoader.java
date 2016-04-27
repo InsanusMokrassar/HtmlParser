@@ -1,6 +1,6 @@
 package insogroup.HtmlParser.StandardRealisation;
 
-import insogroup.HtmlParser.StandardRealisation.PluginSyntaxAnalyzer.State;
+import insogroup.HtmlParser.StandardRealisation.PluginSyntaxAnalyzer.interfaces.State;
 import insogroup.HtmlParser.StandardRealisation.SiteSyntaxAnalyzer.SiteParser;
 import insogroup.HtmlParser.StandardRealisation.exceptions.NetException;
 import org.jsoup.Jsoup;

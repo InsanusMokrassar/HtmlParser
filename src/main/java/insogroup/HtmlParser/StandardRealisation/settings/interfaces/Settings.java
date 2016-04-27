@@ -2,12 +2,12 @@ package insogroup.HtmlParser.StandardRealisation.settings.interfaces;
 
 public interface Settings extends ProgramParameters{
 
-    public boolean checkStardardRegexp(String text);
+    boolean checkStandardRegexp(String text);
 
-    public boolean checkVariable(String text);
+    boolean checkVariable(String text);
 
-    public String getVariableName(String text);
+    String getVariableName(String text);
 
-    public Integer getVisibleCount();
+    Integer getVisibleCount();
 
 }

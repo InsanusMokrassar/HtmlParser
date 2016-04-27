@@ -43,7 +43,7 @@ public class StandardSettings implements Settings {
         }
     }
 
-    public boolean checkStardardRegexp(String text){
+    public boolean checkStandardRegexp(String text){
         return checkWithRegExp(text, "possible-text-characters");
     }
 

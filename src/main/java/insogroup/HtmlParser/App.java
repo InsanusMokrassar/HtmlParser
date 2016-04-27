@@ -2,7 +2,7 @@ package insogroup.HtmlParser;
 
 import insogroup.HtmlParser.StandardRealisation.ContentLoader;
 import insogroup.HtmlParser.StandardRealisation.InitService.InitService;
-import insogroup.HtmlParser.StandardRealisation.PluginSyntaxAnalyzer.State;
+import insogroup.HtmlParser.StandardRealisation.PluginSyntaxAnalyzer.interfaces.State;
 import insogroup.HtmlParser.StandardRealisation.SiteSyntaxAnalyzer.SiteParser;
 import insogroup.HtmlParser.StandardRealisation.exceptions.NetException;
 import insogroup.HtmlParser.StandardRealisation.exceptions.PluginException;
