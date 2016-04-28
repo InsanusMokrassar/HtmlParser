@@ -9,6 +9,8 @@ import insogroup.HtmlParser.StandardRealisation.exceptions.PluginException;
 import insogroup.HtmlParser.StandardRealisation.settings.classes.ProgramProperties;
 import insogroup.HtmlParser.StandardRealisation.settings.interfaces.Settings;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class App
         }
         try {
             State stateTree = InitService.getPlugin(settings, property.get("file"));
+//            State stateTree = InitService.getPlugin(settings, new FileInputStream(property.get("file")));
             String link = stateTree.get("site");
             List<HashMap<String, String>> content = ContentLoader.loadContent(link, new SiteParser(settings), stateTree);
             System.out.println(content.toString());

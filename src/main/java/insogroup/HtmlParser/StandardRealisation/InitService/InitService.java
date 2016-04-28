@@ -11,6 +11,7 @@ import insogroup.HtmlParser.StandardRealisation.settings.interfaces.Settings;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
+import java.io.InputStream;
 
 public class InitService {
     public static final String RESOURCES_PATH= "src/main/res/";
@@ -35,7 +36,7 @@ public class InitService {
         return properties;
     }
 
-    public static State getPlugin(Settings settings, String pluginName) throws PluginException{
+    public static State getPlugin(Settings settings, String pluginName) throws PluginException {
         String actualPlugin = PLUGINS_PATH + pluginName + ".xml";
         PluginSaxParser pluginParser = new PluginSaxParser(settings);
         SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -45,10 +46,21 @@ public class InitService {
             return pluginParser.getRootState();
         }
         catch (Exception e){
-            throw new PluginException("Sorry, but i can't load plugin from tha error : " + e.getMessage());
+            throw new PluginException("Sorry, but i can't load plugin from the error : " + e.getMessage());
         }
     }
 
-
+    public static State getPlugin(Settings settings, InputStream pluginInputStream) throws PluginException {
+        PluginSaxParser pluginParser = new PluginSaxParser(settings);
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        try {
+            SAXParser parser = factory.newSAXParser();
+            parser.parse(pluginInputStream, pluginParser);
+            return pluginParser.getRootState();
+        }
+        catch (Exception e){
+            throw new PluginException("Sorry, but i can't load plugin from the error : " + e.getMessage());
+        }
+    }
 
 }
