@@ -27,9 +27,11 @@ public class SiteParser {
 
     private List<HashMap<String, String>> parseElement(Elements rootParsing, State currentState, List<HashMap<String, String>> oldHashMap){
         Elements tmpElements = findElements(rootParsing, currentState);
+        List<HashMap<String, String>> tmpValues = findVariables(tmpElements, currentState);
+        oldHashMap = updateHashMapValues(tmpValues, oldHashMap);
         for (State tmpState : currentState.getChilds()){
             tmpElements = findElements(tmpElements, tmpState);
-            List<HashMap<String, String>> tmpValues = findVariables(tmpElements, tmpState);
+            tmpValues = findVariables(tmpElements, tmpState);
             oldHashMap = updateHashMapValues(tmpValues, oldHashMap);
             oldHashMap = parseElement(tmpElements, tmpState, oldHashMap);
             rootParsing.removeAll(tmpElements);

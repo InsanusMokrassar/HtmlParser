@@ -33,10 +33,10 @@ public class App
             property = InitService.getProperties(args[0]);
         }
         try {
-            State stateTree = InitService.getPlugin(settings, property.get("file"));
-//            State stateTree = InitService.getPlugin(settings, new FileInputStream(property.get("file")));
-            String link = stateTree.get("site");
-            List<HashMap<String, String>> content = ContentLoader.loadContent(link, new SiteParser(settings), stateTree);
+            State pluginStateRoot = InitService.getPlugin(settings, property.get("file"));
+//            State pluginStateRoot = InitService.getPlugin(settings, new FileInputStream(property.get("file")));
+            String link = pluginStateRoot.get("site");
+            List<HashMap<String, String>> content = ContentLoader.loadContent(link, new SiteParser(settings), pluginStateRoot);
             System.out.println(content.toString());
         } catch (PluginException e) {
             e.printStackTrace();

@@ -15,7 +15,7 @@ public class ContentLoader {
      * @param link
      * @param siteParser
      * SiteParserExemplare
-     * @param stateRoot
+     * @param pluginStateRoot
      * <pre>
      * <root site="PATH TO SITE" terms="TERMS FOR SEARCHING">
      *     <FIRST_TREE></FIRST_TREE>
@@ -29,11 +29,11 @@ public class ContentLoader {
 
     public static List<HashMap<String, String>> loadContent(String link,
                                                             SiteParser siteParser,
-                                                            State stateRoot) throws NetException {
+                                                            State pluginStateRoot) throws NetException {
         List<HashMap<String, String>> resResponse = new ArrayList<>();
         try {
             Document doc = Jsoup.connect(link).get();
-            resResponse = siteParser.parse(doc.children(), stateRoot);
+            resResponse = siteParser.parse(doc.children(), pluginStateRoot);
             if (resResponse.isEmpty()){
                 throw new NetException("");
             }

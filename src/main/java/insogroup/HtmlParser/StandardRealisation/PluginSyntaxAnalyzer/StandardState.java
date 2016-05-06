@@ -72,7 +72,7 @@ public class StandardState implements State {
         String res = "";
         for (char tmp : text.toCharArray()){
             if (!settings.checkStandardRegexp("" + tmp)){
-                break;
+                continue;
             }
             res += tmp;
         }

@@ -1,0 +1,16 @@
+<root site="http://blokstroyproekt.ru/fencing/grid" terms="link">
+    <div class="field-name-field-products-photo">
+        <div class="field-item">
+            <div class="field-item even">
+                <a title="Сетка-рабица" href="%%link%%"></a>
+            </div>
+        </div>
+    </div>
+    <div class="field-name-field-products-photo">
+        <div class="field-item">
+            <div class="field-item odd">
+                <a title="Сетка-рабица" href="%%link%%"></a>
+            </div>
+        </div>
+    </div>
+</root>
