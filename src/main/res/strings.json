@@ -1,0 +1,9 @@
+{
+  "link-name": "link",
+  "wait-message": "Please, wait",
+  "settings-loaded-message": "Configurations loaded",
+  "no-content-message": "No content.\nReturning",
+  "error-input-message": "Error with input",
+  "control-message": "---------\nEnter 0 to see another elements.\nEnter the number to open category or try to see more info.\nIncorrect entered to exit the category\n---------",
+  "return-from-category": "Return from category/element"
+}
