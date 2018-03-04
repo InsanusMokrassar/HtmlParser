@@ -21,8 +21,6 @@ class PluginSaxParser(private val settings: Settings) : DefaultHandler() {
         tab = "    "
     }
 
-    override fun startDocument() {}
-
     override fun startElement(uri: String, localName: String?, qName: String, attr: Attributes) {
         spaces += tab
         currentState = currentState ?. addChild(qName, attr) ?: PluginState(null, qName, attr, settings)

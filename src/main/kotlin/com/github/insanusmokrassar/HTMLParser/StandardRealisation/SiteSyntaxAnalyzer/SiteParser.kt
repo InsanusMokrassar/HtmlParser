@@ -5,12 +5,10 @@ import com.github.insanusmokrassar.HTMLParser.StandardRealisation.Settings
 import com.github.insanusmokrassar.HTMLParser.StandardRealisation.checkVariable
 import com.github.insanusmokrassar.HTMLParser.StandardRealisation.getVariableName
 import org.jsoup.select.Elements
-
-import java.util.ArrayList
-import java.util.HashMap
+import java.util.*
 
 class SiteParser(
-        protected var actualSettings: Settings
+        private var actualSettings: Settings
 ) {
 
     fun parse(rootParsing: Elements, rootState: State): List<HashMap<String, String>> {
@@ -22,15 +20,14 @@ class SiteParser(
     }
 
     private fun parseElement(rootParsing: Elements, currentState: State, oldHashMap: List<HashMap<String, String>>): List<HashMap<String, String>> {
-        var oldHashMap = oldHashMap
         var tmpElements = findElements(rootParsing, currentState)
         var tmpValues: MutableList<HashMap<String, String>> = findVariables(tmpElements, currentState)
-        oldHashMap = updateHashMapValues(tmpValues, oldHashMap)
-        for (tmpState in currentState.childs) {
-            tmpElements = findElements(tmpElements, tmpState)
-            tmpValues = findVariables(tmpElements, tmpState)
+        var oldHashMap = updateHashMapValues(tmpValues, oldHashMap)
+        currentState.childs.forEach {
+            tmpElements = findElements(tmpElements, it)
+            tmpValues = findVariables(tmpElements, it)
             oldHashMap = updateHashMapValues(tmpValues, oldHashMap)
-            oldHashMap = parseElement(tmpElements, tmpState, oldHashMap)
+            oldHashMap = parseElement(tmpElements, it, oldHashMap)
             rootParsing.removeAll(tmpElements)
         }
         return oldHashMap
@@ -52,7 +49,7 @@ class SiteParser(
         return oldHashMap
     }
 
-    fun findVariables(elements: Elements, state: State): MutableList<HashMap<String, String>> {
+    private fun findVariables(elements: Elements, state: State): MutableList<HashMap<String, String>> {
         val variableKeys = ArrayList<String>()
         val variableNames = ArrayList<String>()
         val variables = ArrayList<HashMap<String, String>>()
@@ -95,7 +92,7 @@ class SiteParser(
         return variables
     }
 
-    fun findElements(start: Elements, state: State): Elements {
+    private fun findElements(start: Elements, state: State): Elements {
         var tmpElements = start.select(state.tag)//all attributes with key
         val attrs = state.attributes
         for (key in attrs.keys) {
