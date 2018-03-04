@@ -1,0 +1,9 @@
+<root site="PLACE HERE FULL PATH TO example.html IN FORMAT 'file://...'">
+    <title>%%title%%</title>
+    <div class="exampleClass1">
+        <a href="%%link%%"/>
+    </div>
+    <div id="2">
+        <a>%%text2%%</a>
+    </div>
+</root>

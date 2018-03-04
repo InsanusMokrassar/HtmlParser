@@ -95,14 +95,11 @@ class SiteParser(
     private fun findElements(start: Elements, state: State): Elements {
         var tmpElements = start.select(state.tag)//all attributes with key
         val attrs = state.attributes
-        for (key in attrs.keys) {
-            attrs[key] ?.let {
-                value ->
-                if (actualSettings.checkVariable(value)) {
-                    tmpElements = tmpElements.select("[$key]")//all elements with attribute [key]
-                    return@let
-                }
-                tmpElements = tmpElements.select("[$key*=\"$value\"]")//all elements with attribute [key] and value [value]
+        attrs.forEach {
+            tmpElements = if (actualSettings.checkVariable(it.value)) {
+                tmpElements.select("[${it.key}]")//all elements with attribute [key]
+            } else {
+                tmpElements.select("[${it.key}*=\"${it.value}\"]")//all elements with attribute [key] and value [value]
             }
         }
         return tmpElements

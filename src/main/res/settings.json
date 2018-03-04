@@ -1,7 +1,7 @@
 {
   "possible-text-characters": "[a-zA-Zа-яА-Я\\%]+",
-  "variable-template": "(\\%\\%[a-zA-Zа-яА-Я]+\\%\\%)+",
-  "possible-variable-characters": "[a-zA-Zа-яА-Я]+",
+  "variable-template": "\\%\\%[^\\s]+\\%\\%",
+  "possible-variable-characters": "[^\\s\\%]+",
   "count": 10,
   "strings-path": "src/main/res/strings.xml",
   "standard-property-path": "src/main/res/standardProperty.properties"

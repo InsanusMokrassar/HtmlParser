@@ -4,7 +4,11 @@ import com.github.insanusmokrassar.HTMLParser.StandardRealisation.PluginSyntaxAn
 import com.github.insanusmokrassar.HTMLParser.StandardRealisation.SiteSyntaxAnalyzer.SiteParser
 import com.github.insanusmokrassar.HTMLParser.StandardRealisation.exceptions.NetException
 import org.jsoup.Jsoup
+import java.io.InputStream
+import java.net.URI
+import java.net.URL
 import java.util.*
+import java.util.logging.Logger
 
 /**
  * @param link
@@ -29,12 +33,14 @@ fun loadContent(
 ): List<HashMap<String, String>> {
     var resResponse: List<HashMap<String, String>> = ArrayList()
     try {
-        val doc = Jsoup.connect(link).get()
-        resResponse = siteParser.parse(doc.children(), pluginStateRoot)
+        val url = URL(link)
+        val docRoot = Jsoup.parse(url.openStream(), Charsets.UTF_8.toString(), url.toURI().toString()).children()
+        resResponse = siteParser.parse(docRoot, pluginStateRoot)
         if (resResponse.isEmpty()) {
             throw NetException("")
         }
     } catch (e: Exception) {
+        Logger.getGlobal().throwing("Content loader", "loadContent", e)
     }
 
     return resResponse
