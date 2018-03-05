@@ -3,6 +3,6 @@
   "variable-template": "\\%\\%[^\\s]+\\%\\%",
   "possible-variable-characters": "[^\\s\\%]+",
   "count": 10,
-  "strings-path": "src/main/res/strings.xml",
-  "standard-property-path": "src/main/res/standardProperty.properties"
+  "strings-path": "strings.xml",
+  "standard-property-path": "standardProperty.properties"
 }

@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.HTMLParser.StandardRealisation.exceptions
+package com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer
 
 
 import java.io.IOException

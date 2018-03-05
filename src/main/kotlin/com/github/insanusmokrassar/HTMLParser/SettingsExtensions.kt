@@ -1,10 +1,9 @@
-package com.github.insanusmokrassar.HTMLParser.StandardRealisation
+package com.github.insanusmokrassar.HTMLParser
 
-import com.github.insanusmokrassar.HTMLParser.StandardRealisation.PluginSyntaxAnalyzer.PluginSaxParser
-import com.github.insanusmokrassar.HTMLParser.StandardRealisation.PluginSyntaxAnalyzer.interfaces.State
-import com.github.insanusmokrassar.HTMLParser.StandardRealisation.exceptions.PluginException
+import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginException
+import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginSaxParser
+import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginState
 import com.github.insanusmokrassar.IObjectK.interfaces.IObject
-import java.io.File
 import java.io.FileInputStream
 import java.io.InputStream
 import javax.xml.parsers.SAXParserFactory
@@ -17,7 +16,6 @@ private fun Settings.checkWithRegExp(text: String, templateName: String): Boolea
     } catch (e: Exception) {
         false
     }
-
 }
 
 val Settings.visibleCount: Int?
@@ -58,12 +56,12 @@ private fun Settings.getVariableName(text: String, template: String): String {
 
 
 @Throws(PluginException::class)
-fun Settings.getPlugin(pluginName: String): State? {
+fun Settings.getPlugin(pluginName: String): PluginState? {
     return getPlugin(FileInputStream(pluginName))
 }
 
 @Throws(PluginException::class)
-fun Settings.getPlugin(pluginInputStream: InputStream): State? {
+fun Settings.getPlugin(pluginInputStream: InputStream): PluginState? {
     val pluginParser = PluginSaxParser(this)
     val factory = SAXParserFactory.newInstance()
     try {

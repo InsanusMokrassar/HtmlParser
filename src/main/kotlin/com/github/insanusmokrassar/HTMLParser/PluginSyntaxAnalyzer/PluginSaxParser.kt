@@ -1,8 +1,6 @@
-package com.github.insanusmokrassar.HTMLParser.StandardRealisation.PluginSyntaxAnalyzer
+package com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer
 
-import com.github.insanusmokrassar.HTMLParser.StandardRealisation.PluginSyntaxAnalyzer.interfaces.State
-import com.github.insanusmokrassar.HTMLParser.StandardRealisation.Settings
-import com.github.insanusmokrassar.HTMLParser.StandardRealisation.exceptions.PluginException
+import com.github.insanusmokrassar.HTMLParser.Settings
 import org.xml.sax.Attributes
 import org.xml.sax.helpers.DefaultHandler
 
@@ -11,9 +9,9 @@ class PluginSaxParser(private val settings: Settings) : DefaultHandler() {
     private var spaces: String? = null
     private val tab: String
 
-    private var currentState: State? = null
+    private var currentState: PluginState? = null
 
-    val rootState: State?
+    val rootState: PluginState?
         get() = currentState ?. root
 
     init {

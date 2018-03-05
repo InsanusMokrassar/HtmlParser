@@ -33,7 +33,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <kotlin.version>1.2.30</kotlin.version>
-    <kotlin.coroutines.version>0.22.2</kotlin.coroutines.version>
+    <kotlin.coroutines.version>0.22.3</kotlin.coroutines.version>
     <dokka.version>0.9.15</dokka.version>
     <gpg.passphraseServerId>bintray-insanusmokrassar-StandardRepository</gpg.passphraseServerId>
     <main.class>${project.groupId}.${project.artifactId}.ExampleKt</main.class>
