@@ -1,10 +1,7 @@
 package com.github.insanusmokrassar.HTMLParser.SiteSyntaxAnalyzer
 
+import com.github.insanusmokrassar.HTMLParser.*
 import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginState
-import com.github.insanusmokrassar.HTMLParser.Settings
-import com.github.insanusmokrassar.HTMLParser.checkVariable
-import com.github.insanusmokrassar.HTMLParser.getVariableName
-import com.github.insanusmokrassar.HTMLParser.openInputStream
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
 import java.io.File
@@ -16,9 +13,25 @@ import java.net.URL
 import java.util.*
 
 class SiteParser(
-        private var actualSettings: Settings,
+        private var actualSettings: Settings = defaultSettings,
         private val defaultPluginStateRoot: PluginState? = null
 ) {
+    constructor(
+            settings: Settings = defaultSettings,
+            defaultPluginURL: URL
+    ) : this(
+            settings,
+            settings.getPlugin(defaultPluginURL.openStream())
+    )
+
+    constructor(
+            settings: Settings = defaultSettings,
+            defaultPluginPath: String
+    ): this(
+            settings,
+            URL(defaultPluginPath)
+    )
+
     fun parse(
             link: String,
             pluginStateRoot: PluginState = defaultPluginStateRoot ?: throw IllegalStateException("Default plugin was not set")
