@@ -1,6 +1,6 @@
-package com.github.insanusmokrassar.HTMLParser
+package com.github.insanusmokrassar.HtmlParser
 
-import com.github.insanusmokrassar.HTMLParser.SiteSyntaxAnalyzer.SiteParser
+import com.github.insanusmokrassar.HtmlParser.SiteSyntaxAnalyzer.SiteParser
 
 fun main(args: Array<String>) {
     val pluginStateRoot = defaultSettings.getPlugin(

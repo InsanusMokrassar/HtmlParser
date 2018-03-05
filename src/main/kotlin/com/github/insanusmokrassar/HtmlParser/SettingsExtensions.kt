@@ -1,8 +1,8 @@
-package com.github.insanusmokrassar.HTMLParser
+package com.github.insanusmokrassar.HtmlParser
 
-import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginException
-import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginSaxParser
-import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginState
+import com.github.insanusmokrassar.HtmlParser.PluginSyntaxAnalyzer.PluginException
+import com.github.insanusmokrassar.HtmlParser.PluginSyntaxAnalyzer.PluginSaxParser
+import com.github.insanusmokrassar.HtmlParser.PluginSyntaxAnalyzer.PluginState
 import com.github.insanusmokrassar.IObjectK.interfaces.IInputObject
 import java.io.IOException
 import java.io.InputStream

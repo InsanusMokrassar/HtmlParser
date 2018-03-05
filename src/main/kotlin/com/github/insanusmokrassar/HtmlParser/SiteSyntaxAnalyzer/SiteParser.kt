@@ -1,7 +1,7 @@
-package com.github.insanusmokrassar.HTMLParser.SiteSyntaxAnalyzer
+package com.github.insanusmokrassar.HtmlParser.SiteSyntaxAnalyzer
 
-import com.github.insanusmokrassar.HTMLParser.*
-import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginState
+import com.github.insanusmokrassar.HtmlParser.*
+import com.github.insanusmokrassar.HtmlParser.PluginSyntaxAnalyzer.PluginState
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
 import java.io.File

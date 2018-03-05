@@ -1,4 +1,4 @@
-package com.github.insanusmokrassar.HTMLParser
+package com.github.insanusmokrassar.HtmlParser
 
 import com.github.insanusmokrassar.IObjectK.interfaces.IInputObject
 import com.github.insanusmokrassar.IObjectKRealisations.readIObject

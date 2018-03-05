@@ -1,7 +1,7 @@
-package com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer
+package com.github.insanusmokrassar.HtmlParser.PluginSyntaxAnalyzer
 
-import com.github.insanusmokrassar.HTMLParser.Settings
-import com.github.insanusmokrassar.HTMLParser.checkStandardRegexp
+import com.github.insanusmokrassar.HtmlParser.Settings
+import com.github.insanusmokrassar.HtmlParser.checkStandardRegexp
 import org.xml.sax.Attributes
 import java.util.*
 
