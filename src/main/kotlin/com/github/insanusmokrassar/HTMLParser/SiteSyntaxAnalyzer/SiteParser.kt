@@ -14,7 +14,6 @@ import java.net.MalformedURLException
 import java.net.URI
 import java.net.URL
 import java.util.*
-import java.util.logging.Logger
 
 class SiteParser(
         private var actualSettings: Settings,

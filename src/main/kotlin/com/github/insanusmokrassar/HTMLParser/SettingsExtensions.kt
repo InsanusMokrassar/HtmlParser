@@ -4,6 +4,7 @@ import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginExcepti
 import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginSaxParser
 import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginState
 import com.github.insanusmokrassar.IObjectK.interfaces.IInputObject
+import java.io.IOException
 import java.io.InputStream
 import javax.xml.parsers.SAXParserFactory
 
@@ -47,13 +48,13 @@ private fun Settings.getVariableName(text: String, template: String): String {
 }
 
 
-@Throws(PluginException::class)
-fun Settings.getPlugin(pluginName: String): PluginState? {
+@Throws(PluginException::class, IOException::class)
+fun Settings.getPlugin(pluginName: String): PluginState {
     return getPlugin(openInputStream(pluginName))
 }
 
 @Throws(PluginException::class)
-fun Settings.getPlugin(pluginInputStream: InputStream): PluginState? {
+fun Settings.getPlugin(pluginInputStream: InputStream): PluginState {
     val pluginParser = PluginSaxParser(this)
     val factory = SAXParserFactory.newInstance()
     try {
@@ -61,6 +62,6 @@ fun Settings.getPlugin(pluginInputStream: InputStream): PluginState? {
         parser.parse(pluginInputStream, pluginParser)
         return pluginParser.rootState
     } catch (e: Exception) {
-        throw PluginException("Sorry, but i can't load plugin from the error : " + e.message)
+        throw PluginException("Sorry, but i can't load plugin: " + e.message)
     }
 }

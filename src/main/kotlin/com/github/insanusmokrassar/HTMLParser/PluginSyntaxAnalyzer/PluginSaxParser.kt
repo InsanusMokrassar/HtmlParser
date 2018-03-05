@@ -8,8 +8,8 @@ class PluginSaxParser(private val settings: Settings) : DefaultHandler() {
 
     private var currentState: PluginState? = null
 
-    val rootState: PluginState?
-        get() = currentState ?. root
+    val rootState: PluginState
+        get() = currentState ?. root ?: throw IllegalStateException("Parser was not applied")
 
     override fun startElement(uri: String, localName: String?, qName: String, attr: Attributes) {
         currentState = currentState ?. addChild(qName, attr) ?: PluginState(null, qName, attr, settings)
