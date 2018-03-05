@@ -12,6 +12,9 @@ import java.net.URI
 import java.net.URL
 import java.util.*
 
+/**
+ * Main class of library which provide parsing of html or other xml-based input
+ */
 class SiteParser(
         private var actualSettings: Settings = defaultSettings,
         private val defaultPluginStateRoot: PluginState? = null

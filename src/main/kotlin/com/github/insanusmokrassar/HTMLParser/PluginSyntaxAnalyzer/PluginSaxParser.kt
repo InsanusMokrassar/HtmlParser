@@ -4,6 +4,9 @@ import com.github.insanusmokrassar.HTMLParser.Settings
 import org.xml.sax.Attributes
 import org.xml.sax.helpers.DefaultHandler
 
+/**
+ * Realisation of JSoup DefaultHandler for parsing plugins
+ */
 class PluginSaxParser(private val settings: Settings) : DefaultHandler() {
 
     private var currentState: PluginState? = null
@@ -15,10 +18,10 @@ class PluginSaxParser(private val settings: Settings) : DefaultHandler() {
         currentState = currentState ?. addChild(qName, attr) ?: PluginState(null, qName, attr, settings)
     }
 
-    override fun characters(text: CharArray?, start: Int, length: Int) {
+    override fun characters(text: CharArray, start: Int, length: Int) {
         var stringText = ""
         for (i in start until start + length)
-            stringText += text!![i]
+            stringText += text[i]
         currentState ?. text = stringText
     }
 
