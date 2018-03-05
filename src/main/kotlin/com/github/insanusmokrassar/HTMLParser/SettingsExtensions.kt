@@ -3,12 +3,13 @@ package com.github.insanusmokrassar.HTMLParser
 import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginException
 import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginSaxParser
 import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginState
-import com.github.insanusmokrassar.IObjectK.interfaces.IObject
-import java.io.FileInputStream
+import com.github.insanusmokrassar.IObjectK.interfaces.IInputObject
 import java.io.InputStream
 import javax.xml.parsers.SAXParserFactory
 
-typealias Settings = IObject<Any>
+typealias Settings = IInputObject<String, Any>
+
+val defaultSettings: Settings = readIObject("settings.json")
 
 private fun Settings.checkWithRegExp(text: String, templateName: String): Boolean {
     return try {
@@ -17,15 +18,6 @@ private fun Settings.checkWithRegExp(text: String, templateName: String): Boolea
         false
     }
 }
-
-val Settings.visibleCount: Int?
-    get() {
-        return try {
-            Integer.parseInt(this["count"])
-        } catch (e: Throwable) {
-            Integer.parseInt(this["standard-count"])
-        }
-    }
 
 fun Settings.checkStandardRegexp(text: String): Boolean {
     return checkWithRegExp(text, "possible-text-characters")

@@ -17,19 +17,19 @@ import java.util.*
 import java.util.logging.Logger
 
 class SiteParser(
-        private var actualSettings: Settings
+        private var actualSettings: Settings,
+        private val defaultPluginStateRoot: PluginState? = null
 ) {
     fun parse(
             link: String,
-            pluginStateRoot: PluginState
+            pluginStateRoot: PluginState = defaultPluginStateRoot ?: throw IllegalStateException("Default plugin was not set")
     ): List<HashMap<String, String>> {
         return try {
             parse(URL(link), pluginStateRoot)
         } catch (e: MalformedURLException) {
             parse(
                     openInputStream(link),
-                    pluginStateRoot,
-                    File("").toURI()
+                    pluginStateRoot
             )
         }
     }
@@ -37,7 +37,7 @@ class SiteParser(
     @Throws(Exception::class)
     fun parse(
             url: URL,
-            pluginStateRoot: PluginState
+            pluginStateRoot: PluginState = defaultPluginStateRoot ?: throw IllegalStateException("Default plugin was not set")
     ): List<HashMap<String, String>> {
         return parse(url.openStream(), pluginStateRoot, url.toURI())
     }
@@ -45,8 +45,8 @@ class SiteParser(
     @Throws(Exception::class)
     fun parse(
             inputStream: InputStream,
-            pluginStateRoot: PluginState,
-            baseUri: URI
+            pluginStateRoot: PluginState = defaultPluginStateRoot ?: throw IllegalStateException("Default plugin was not set"),
+            baseUri: URI = File("").toURI()
     ): List<HashMap<String, String>> {
         val docRoot = Jsoup.parse(
                 inputStream,
@@ -61,7 +61,10 @@ class SiteParser(
         }
     }
 
-    fun parse(rootParsing: Elements, rootState: PluginState): List<HashMap<String, String>> {
+    fun parse(
+            rootParsing: Elements,
+            rootState: PluginState = defaultPluginStateRoot ?: throw IllegalStateException("Default plugin was not set")
+    ): List<HashMap<String, String>> {
         val res = ArrayList<HashMap<String, String>>()
         for (tmpState in rootState.childs) {
             res.addAll(parseElement(rootParsing, tmpState, ArrayList()))
