@@ -4,9 +4,14 @@ import com.github.insanusmokrassar.HTMLParser.PluginSyntaxAnalyzer.PluginState
 import com.github.insanusmokrassar.HTMLParser.Settings
 import com.github.insanusmokrassar.HTMLParser.checkVariable
 import com.github.insanusmokrassar.HTMLParser.getVariableName
+import com.github.insanusmokrassar.HTMLParser.openInputStream
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
+import java.io.File
+import java.io.InputStream
 import java.net.ConnectException
+import java.net.MalformedURLException
+import java.net.URI
 import java.net.URL
 import java.util.*
 import java.util.logging.Logger
@@ -18,7 +23,15 @@ class SiteParser(
             link: String,
             pluginStateRoot: PluginState
     ): List<HashMap<String, String>> {
-        return parse(URL(link), pluginStateRoot)
+        return try {
+            parse(URL(link), pluginStateRoot)
+        } catch (e: MalformedURLException) {
+            parse(
+                    openInputStream(link),
+                    pluginStateRoot,
+                    File("").toURI()
+            )
+        }
     }
 
     @Throws(Exception::class)
@@ -26,10 +39,19 @@ class SiteParser(
             url: URL,
             pluginStateRoot: PluginState
     ): List<HashMap<String, String>> {
+        return parse(url.openStream(), pluginStateRoot, url.toURI())
+    }
+
+    @Throws(Exception::class)
+    fun parse(
+            inputStream: InputStream,
+            pluginStateRoot: PluginState,
+            baseUri: URI
+    ): List<HashMap<String, String>> {
         val docRoot = Jsoup.parse(
-                url.openStream(),
+                inputStream,
                 Charsets.UTF_8.toString(),
-                url.toURI().toString()
+                baseUri.toString()
         ).children()
 
         return parse(docRoot, pluginStateRoot).apply {

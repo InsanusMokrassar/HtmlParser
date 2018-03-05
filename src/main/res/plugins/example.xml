@@ -1,4 +1,4 @@
-<root site="PLACE HERE FULL PATH TO example.html IN FORMAT 'file://...'">
+<root site="example.html">
     <title>%%title%%</title>
     <div class="exampleClass1">
         <a href="%%link%%"/>

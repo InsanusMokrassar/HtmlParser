@@ -6,21 +6,12 @@ import org.xml.sax.helpers.DefaultHandler
 
 class PluginSaxParser(private val settings: Settings) : DefaultHandler() {
 
-    private var spaces: String? = null
-    private val tab: String
-
     private var currentState: PluginState? = null
 
     val rootState: PluginState?
         get() = currentState ?. root
 
-    init {
-        spaces = ""
-        tab = "    "
-    }
-
     override fun startElement(uri: String, localName: String?, qName: String, attr: Attributes) {
-        spaces += tab
         currentState = currentState ?. addChild(qName, attr) ?: PluginState(null, qName, attr, settings)
     }
 
@@ -32,7 +23,6 @@ class PluginSaxParser(private val settings: Settings) : DefaultHandler() {
     }
 
     override fun endElement(uri: String?, localName: String?, qName: String?) {
-        spaces = spaces!!.replaceFirst(tab.toRegex(), "")
         try {
             currentState ?. parent ?.let {
                 currentState = it

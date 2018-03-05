@@ -5,6 +5,7 @@ import com.github.insanusmokrassar.IObjectKRealisations.readIObject
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileNotFoundException
+import java.io.InputStream
 
 const val RESOURCES_PATH = "src/main/res/"
 const val SETTINGS_PATH = RESOURCES_PATH + "settings.json"
@@ -15,7 +16,11 @@ fun getProperties(path: String): IInputObject<String, Any> {
     return readIObject(path)
 }
 
+internal fun openInputStream(path: String): InputStream {
+    return ClassLoader.getSystemResourceAsStream(path) ?: FileInputStream(path)
+}
+
 @Throws(FileNotFoundException::class)
 internal fun readIObject(path: String): IInputObject<String, Any> {
-    return (ClassLoader.getSystemResourceAsStream(path) ?: FileInputStream(path)).readIObject()
+    return openInputStream(path).readIObject()
 }

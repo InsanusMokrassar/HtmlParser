@@ -57,7 +57,7 @@ private fun Settings.getVariableName(text: String, template: String): String {
 
 @Throws(PluginException::class)
 fun Settings.getPlugin(pluginName: String): PluginState? {
-    return getPlugin(FileInputStream(pluginName))
+    return getPlugin(openInputStream(pluginName))
 }
 
 @Throws(PluginException::class)
