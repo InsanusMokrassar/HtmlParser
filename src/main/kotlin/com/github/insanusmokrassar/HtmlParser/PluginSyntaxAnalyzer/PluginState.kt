@@ -1,15 +1,14 @@
 package com.github.insanusmokrassar.HtmlParser.PluginSyntaxAnalyzer
 
 import com.github.insanusmokrassar.HtmlParser.Settings
-import com.github.insanusmokrassar.HtmlParser.checkStandardRegexp
 import org.xml.sax.Attributes
 import java.util.*
 
 class PluginState(
-        val parent: PluginState?,
-        val tag: String,
-        externalAttributes: Attributes,
-        private val settings: Settings
+    val parent: PluginState?,
+    val tag: String,
+    externalAttributes: Attributes,
+    private val settings: Settings
 ) {
     var text: String = ""
         set(value) {
@@ -23,8 +22,7 @@ class PluginState(
         }
     val childs: MutableList<PluginState> = ArrayList()
 
-    val attributes: Map<String, String> = (0 until externalAttributes.length).map {
-        i ->
+    val attributes: Map<String, String> = (0 until externalAttributes.length).map { i ->
         Pair(externalAttributes.getQName(i), externalAttributes.getValue(i))
     }.toMap()
 

@@ -1,7 +1,0 @@
-{
-  "possible-text-characters": "[a-zA-Zа-яА-Я\\%]+",
-  "variable-template": "\\%\\%[^\\s]+\\%\\%",
-  "possible-variable-characters": "[^\\s\\%]+",
-  "strings-path": "strings.xml",
-  "standard-property-path": "standardProperty.properties"
-}
